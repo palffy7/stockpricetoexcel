@@ -16,7 +16,7 @@ wb = load_workbook(wb_path)
 # first sheet of file
 sheet_ranges = (wb[wb.sheetnames[0]])
 
-i = 4
+i = 3
 first = True
 while True:
     ticker = sheet_ranges['B' + str(i)].value
