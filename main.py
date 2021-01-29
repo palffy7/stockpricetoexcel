@@ -1,14 +1,17 @@
 import datetime as dt
-import pandas as pd
+import os
 import pandas_datareader.data as web
 from openpyxl import load_workbook
 
-path = 'C:/Users/ralph/Documents/trading/'
+
 filename = 'Investment.xlsx'
+csv_name_ticker_prices = 'tickerprices.csv'
+path = os.getcwd()
+wb_path = os.path.join(os.getcwd(), filename)
 time = dt.datetime.combine(dt.date.today(), dt.datetime.min.time())
 
 # read excel file from path
-wb = load_workbook(path + filename)
+wb = load_workbook(wb_path)
 
 # first sheet of file
 sheet_ranges = (wb[wb.sheetnames[0]])
@@ -34,12 +37,8 @@ while True:
     else:
         break
 print(df)
-df.to_csv(path + 'tickerprices.csv')
-# start = dt.datetime(2021, 1, 15)
-# end = dt.datetime(2021, 1, 1)
+df.to_csv(os.path.join(path, csv_name_ticker_prices))
 
-#
-# # df = web.DataReader('TSLA', 'yahoo', start, end)
 
 
 
